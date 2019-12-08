@@ -12,7 +12,7 @@ const Ticket = mongoose.model(
     },
     isOpen: {
       type: Boolean,
-      default: true
+      default: false
     },
     phone: {
       type: String,
@@ -24,8 +24,23 @@ const Ticket = mongoose.model(
       type: String,
       minlength: 3,
       maxlength: 50
+    },
+    date:{
+      type : Date,
+      default : Date.now
+    },
+    gender:{
+      type :String,
+      enum:['male','female','other']
+    },
+    age:{
+      type:Number,
+      min:3,
+      max:100
     }
-  })
+  },{
+    versionKey: false
+})
 );
 
 function validateTicket(ticket) {
@@ -40,7 +55,29 @@ function validateTicket(ticket) {
       .max(10)
       .required(),
     email: Joi.string().required().email({ minDomainAtoms: 2 }),
-    isOpen: Joi.boolean()
+    isOpen: Joi.boolean(),
+    age:Joi.number().integer().greater(3).required(),
+    gender:Joi.string().required(),
+    date:Joi.date()
+  };
+const result=Joi.validate(ticket, schema);
+  return result;
+}
+
+function validateTicketPatch(ticket) {
+  const schema = {
+    name: Joi.string()
+    .regex(/^[a-zA-Z ]*$/)
+      .min(3)
+      .max(30),
+    phone: Joi.string()
+      .min(10)
+      .max(10),
+    email: Joi.string().email({ minDomainAtoms: 2 }),
+    isOpen: Joi.boolean().required(),
+    age:Joi.number().integer().greater(3),
+    gender:Joi.string(),
+    date:Joi.date()
   };
 const result=Joi.validate(ticket, schema);
   return result;
@@ -48,3 +85,4 @@ const result=Joi.validate(ticket, schema);
 
 exports.Ticket = Ticket;
 exports.validate = validateTicket;
+exports.validatePatch=validateTicketPatch;
