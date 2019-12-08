@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "dccbbfd7-9a17-4cfc-b3d8-435a8065e237",
+		"name": "Ticket_booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "viewall Tickets(Dev Purpose)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tickets/viewAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tickets",
+						"viewAll"
+					]
+				},
+				"description": "To get all Tickets"
+			},
+			"response": []
+		},
+		{
+			"name": "Add ticket(Dev Purpose)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"name\": \"sachin\",\r\n        \"phone\": \"9949256384\",\r\n        \"email\": \"sachin@tendulkar.com\",\r\n        \"age\":46,\r\n        \"gender\":\"Male\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/tickets/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tickets",
+						"add"
+					]
+				},
+				"description": "inserts into db.If count is less than 40"
+			},
+			"response": []
+		},
+		{
+			"name": "1.Update ticket status or details by Id",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"age\": 31,\r\n        \"email\": \"kohli@virat.com\",\r\n        \"gender\": \"male\",\r\n        \"name\": \"kohli\",\r\n        \"phone\": \"8475932010\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/tickets/book/5ded1f665d6d3b2b4050d055",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tickets",
+						"book",
+						"5ded1f665d6d3b2b4050d055"
+					]
+				},
+				"description": "update info by id \nName,Phonenumber,email is mandatory fiels"
+			},
+			"response": []
+		},
+		{
+			"name": "4. View all opentickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tickets/viewOpen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tickets",
+						"viewOpen"
+					]
+				},
+				"description": "gives all open tickets"
+			},
+			"response": []
+		},
+		{
+			"name": "3. View all closed tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tickets/viewClose",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tickets",
+						"viewClose"
+					]
+				},
+				"description": "gives all closed tickets"
+			},
+			"response": []
+		},
+		{
+			"name": "2.View ticketStatus for provided Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tickets/viewStatus/5ded1f785d6d3b2b4050d05c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tickets",
+						"viewStatus",
+						"5ded1f785d6d3b2b4050d05c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.View details for person owning ticket by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tickets/viewDetails/5ded1f785d6d3b2b4050d05c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tickets",
+						"viewDetails",
+						"5ded1f785d6d3b2b4050d05c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6.Admin to open up all tickets",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tickets/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tickets",
+						"admin"
+					]
+				},
+				"description": "opens all tickets"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

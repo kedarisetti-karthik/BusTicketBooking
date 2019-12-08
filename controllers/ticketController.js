@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 module.exports.getAllTickets = async function (req, res, next) {
   await Ticket
     .find({})
-    .sort('name')
+    .sort({ name : -1,isOpen : -1 })
     .exec((err, response) => {
       if (err) {
         res
@@ -21,7 +21,7 @@ module.exports.getAllTickets = async function (req, res, next) {
 module.exports.viewClose = async function (req, res, next) {
   let ticket;
   try {
-    ticket = await Ticket.find({ isOpen: { $eq: false } });
+    ticket = await Ticket.find({ isOpen: { $eq: false } }).sort('name');
     if (ticket.length < 1)
       return res.status(404).send("No closed tickets found.");
     res.send(ticket);
@@ -35,7 +35,7 @@ module.exports.viewOpen = async function (req, res, next) {
   try {
     ticket = await Ticket.find({ isOpen: { $ne: false } });
     if (ticket.length < 1)
-      return res.status(404).send("No open tickets found.");
+      return res.status(404).send("No open tickets found.").sort('name');
     res.send(ticket);
   } catch (err) {
     console.log(err);

@@ -8,7 +8,7 @@ var cors = require('cors');
 const ticket=require('./routes/ticket');
 
 mongoose.connect('mongodb+srv://karthik:jinglebells25@mynodejs-eg4u7.mongodb.net/test?retryWrites=true&w=majority',{ useUnifiedTopology: true,useNewUrlParser: true ,useFindAndModify: false })
-    .then(()=>{console.log("Db connection done")})
+    .then(()=>{console.log("Database connected successfully")})
     .catch((err)=>{console.log(err)})
 const app = express();
 
@@ -28,4 +28,4 @@ if (config.get("env") === "dev") {
 app.use('/tickets',ticket);
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Hey im living on : ${port} `));
+app.listen(port, () => console.log(`Hey i'm living on : ${port} `));
