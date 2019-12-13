@@ -74,7 +74,6 @@ function validateTicketPatch(ticket) {
       .min(10)
       .max(10),
     email: Joi.string().email({ minDomainAtoms: 2 }),
-    isOpen: Joi.boolean().required(),
     age:Joi.number().integer().greater(3),
     gender:Joi.string(),
     date:Joi.date()

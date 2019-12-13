@@ -4,20 +4,20 @@ const express = require("express");
 const ticketController = require("../controllers/ticketController");
 const router = express.Router();
 
-router.route("/viewAll").get(ticketController.getAllTickets);
+router.route("/viewall").get(ticketController.getAllTickets);
 
 router.route("/add").post(ticketController.bookTicket);
 
 router.route("/book/:id").patch(ticketController.updateById);
 
-router.route("/admin").put(ticketController.admin);
+router.route("/admin/resetall").put(ticketController.admin);
 
-router.route("/viewStatus/:id").get(ticketController.viewStatusById);
+router.route("/viewstatus/:id").get(ticketController.viewStatusById);
 
-router.route("/viewDetails/:id").get(ticketController.viewById);
+router.route("/viewdetails/:id").get(ticketController.viewById);
 
-router.route("/viewOpen").get(ticketController.viewOpen);
+router.route("/viewopen").get(ticketController.viewOpen);
 
-router.route("/viewClose").get(ticketController.viewClose);
+router.route("/viewclose").get(ticketController.viewClose);
 
 module.exports = router;
